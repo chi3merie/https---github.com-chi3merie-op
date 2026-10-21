@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration | Bright Future School</title>
+
+    <style>
+        /* GENERAL STYLING */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* NAVIGATION BAR */
+        header {
+            background: #ffffff;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: bold;
+            color: #123c69;
+        }
+
+        .logo span {
+            color: #f59e0b;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        nav a {
+            color: #334155;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        nav a:hover {
+            color: #f59e0b;
+        }
+
+        .nav-button {
+            background: #f59e0b;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 5px;
+        }
+
+        /* PAGE HEADING */
+        .page-heading {
+            background: #123c69;
+            color: white;
+            text-align: center;
+            padding: 45px 8%;
+        }
+
+        .page-heading h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .page-heading p {
+            color: #e2e8f0;
+        }
+
+        .accent {
+            color: #fbbf24;
+        }
+
+        /* REGISTRATION SECTION */
+        .registration-section {
+            padding: 60px 8%;
+        }
+
+        .registration-container {
+            max-width: 850px;
+            margin: auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-heading {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .form-heading h2 {
+            color: #123c69;
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .form-heading p {
+            color: #64748b;
+        }
+
+        /* FORM SECTIONS */
+        .form-section {
+            margin-bottom: 30px;
+        }
+
+        .form-section h3 {
+            color: #123c69;
+            font-size: 20px;
+            border-bottom: 2px solid #f59e0b;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 7px;
+            color: #334155;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 5px;
+            font-size: 15px;
+            outline: none;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #123c69;
+            box-shadow: 0 0 0 3px rgba(18, 60, 105, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* CHECKBOX */
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .checkbox-group input {
+            margin-top: 6px;
+            accent-color: #123c69;
+        }
+
+        .checkbox-group label {
+            font-size: 14px;
+            color: #475569;
+        }
+
+        /* SUBMIT BUTTON */
+        .submit-button {
+            width: 100%;
+            padding: 15px;
+            background: #f59e0b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .submit-button:hover {
+            background: #d97706;
+            transform: translateY(-2px);
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .login-link a {
+            color: #123c69;
+            font-weight: bold;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #0b1f36;
+            color: white;
+            padding: 30px 8%;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 14px;
+            color: #cbd5e1;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 18px 5%;
+            }
+
+            nav {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            .page-heading h1 {
+                font-size: 28px;
+            }
+
+            .registration-section {
+                padding: 30px 5%;
+            }
+
+            .registration-container {
+                padding: 25px 18px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full-width {
+                grid-column: auto;
+            }
+
+            .form-heading h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <header>
+        <a href="index.html" class="logo">
+            Bright<span>Future</span>
+        </a>
+         <nav aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="About.html">About</a>
+            <a href="program.html">Programs</a>
+            <a href="Contact.html">Contact</a>
+            <a href="registration.html" class="nav-button">Register</a>
+        </nav>
+    </header>
+
+    <!-- PAGE HEADING -->
+    <section class="page-heading">
+        <h1>Student <span class="accent">Registration</span></h1>
+        <p>Begin your journey to a brighter future with us.</p>
+    </section>
+
+    <!-- REGISTRATION FORM -->
+    <section class="registration-section">
+
+        <div class="registration-container">
+
+            <div class="form-heading">
+                <h2>Create Your Application</h2>
+                <p>Please complete the form below to apply for admission.</p>
+            </div>
+
+            <form action="#" method="post">
+
+                <!-- STUDENT INFORMATION -->
+                <div class="form-section">
+                    <h3>Student Information</h3>
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName"
+                                   name="firstName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName"
+                                   name="lastName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="middleName">Middle Name</label>
+                            <input type="text" id="middleName"
+                                   name="middleName">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dob">Date of Birth *</label>
+                            <input type="date" id="dob"
+                                   name="dob" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="gender">Gender *</label>
+                            <select id="gender" name="gender" required>
+                                <option value="">Select gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                                <option value="prefer-not-to-say">
+                                    Prefer not to say
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email"
+                                   name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone"
+                                   name="phone" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="class">Class Applying For *</label>
+                            <select id="class" name="class" required>
+                                <option value="">Select class</option>
+                                <option value="nursery-1">Nursery 1</option>
+                                <option value="nursery-2">Nursery 2</option>
+                                <option value="primary-1">Primary 1</option>
+                                <option value="primary-2">Primary 2</option>
+                                <option value="primary-3">Primary 3</option>
+                                <option value="primary-4">Primary 4</option>
+                                <option value="primary-5">Primary 5</option>
+                                <option value="primary-6">Primary 6</option>
+                                <option value="jss-1">JSS 1</option>
+                                <option value="jss-2">JSS 2</option>
+                                <option value="jss-3">JSS 3</option>
+                                <option value="sss-1">SSS 1</option>
+                                <option value="sss-2">SSS 2</option>
+                                <option value="sss-3">SSS 3</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="address">Home Address *</label>
+                            <textarea id="address" name="address"
+                                      required></textarea>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- PARENT OR GUARDIAN INFORMATION -->
+                <div class="form-section">
+                    <h3>Parent / Guardian Information</h3>
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="parentName">
+                                Parent/Guardian Full Name *
+                            </label>
+                            <input type="text" id="parentName"
+                                   name="parentName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="relationship">Relationship *</label>
+                            <select id="relationship" name="relationship"
+                                    required>
+                                <option value="">Select relationship</option>
+                                <option value="father">Father</option>
+                                <option value="mother">Mother</option>
+                                <option value="guardian">Guardian</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="parentPhone">
+                                Parent/Guardian Phone *
+                            </label>
+                            <input type="tel" id="parentPhone"
+                                   name="parentPhone" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="parentEmail">
+                                Parent/Guardian Email
+                            </label>
+                            <input type="email" id="parentEmail"
+                                   name="parentEmail">
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- ADDITIONAL INFORMATION -->
+                <div class="form-section">
+                    <h3>Additional Information</h3>
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="previousSchool">
+                                Previous School
+                            </label>
+                            <input type="text" id="previousSchool"
+                                   name="previousSchool">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="admissionYear">
+                                Admission Year *
+                            </label>
+                            <select id="admissionYear"
+                                    name="admissionYear" required>
+                                <option value="">Select year</option>
+                                <option value="2026/2027">2026/2027</option>
+                                <option value="2027/2028">2027/2028</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="message">
+                                Additional Information
+                            </label>
+                            <textarea id="message" name="message"
+                                      placeholder="Enter any additional information here..."></textarea>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- DECLARATION -->
+                <div class="checkbox-group">
+                    <input type="checkbox" id="agreement"
+                           name="agreement" required>
+
+                    <label for="agreement">
+                        I confirm that the information provided is accurate
+                        to the best of my knowledge.
+                    </label>
+                </div>
+
+                <!-- SUBMIT BUTTON -->
+                <button type="submit" class="submit-button">
+                    Submit Registration
+                </button>
+
+                <p class="login-link">
+                    Already registered?
+                    <a href="login.html">Login here</a>
+                </p>
+
+            </form>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>
+            &copy; 2026 Bright Future School.
+            All Rights Reserved.
+        </p>
+    </footer>
+
+</body>
+</html>
